@@ -30,3 +30,5 @@ main(){
 	check_metrics "Mem" "$mem" "$MEM_WARN_PCT" "$MEM_CRIT_PCT"
 	check_metrics "Disk" "$disk" "$DISK_WARN_PCT" "$DISK_CRIT_PCT"
 }
+
+main
