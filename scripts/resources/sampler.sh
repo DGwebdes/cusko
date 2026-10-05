@@ -10,7 +10,7 @@ sample_cpu(){
 	local u2 n2 s2 i2 io2 irq2 sirq2 st2
 	local idle1 total1 idle2 total2 idle_delta total_delta
 
-	read -r _ u1 n1 i1 io1 irq1 sirq1 st1 _ _ < /proc/stat
+	read -r _ u1 n1 s1 i1 io1 irq1 sirq1 st1 _ _ < /proc/stat
 	idle1=$((i1 + io1))
 	total1=$((u1 + n1 + s1 + i1 + io1 + irq1 + sirq1 + st1))
 
