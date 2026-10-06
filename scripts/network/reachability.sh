@@ -12,13 +12,13 @@ seconds_to_ms(){
 	frac="${val#*.}"
 	frac="${frac}000000"
 	frac="${frac:0:6}"
-	echo $(( 10#$sec * 1000 + (10#$frac + 500) / 1000))
+	echo $(( 10#$sec * 1000 + ( 10#$frac + 500 ) / 1000 ))
 }
 
 check_reachability(){
 	local target="$1" out http_code time_total_s curl_exit latency_ms
 
-	out="$(curl -s -o /dev/null -w '%{http_code] %{total_time}' --max-time 5 "$target")"
+	out="$(curl -s -o /dev/null -w '%{http_code} %{time_total}' --max-time 5 "$target")"
 	curl_exit=$?
 
 	if ((curl_exit != 0)); then
