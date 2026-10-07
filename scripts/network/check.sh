@@ -15,8 +15,15 @@ check_metric(){
 	fi
 }
 
+trigger_resource_snapshot(){
+	local reason="$1"
+	log_info "Chaining: ${reason} triggered a resource snapshot"
+
+	"$SCRIPT_DIR/../resources/sampler.sh"
+}
+
 main(){
-	local total time_wait
+	local total time_wait breached=0
 	total="$(sample_conn_total)"
 	time_wait="$(sample_time_wait_count)"
 
@@ -24,6 +31,10 @@ main(){
 
 	check_metric "Connections" "$total" "$CONN_WARN_COUNT"
 	check_metric "TIME_WAIT connections" "$time_wait" "$TIME_WAIT_WARN_COUNT"
+
+	if ((breached)) && [[ "$CHAIN_SNAPSHOT_ON_BREACH" == "true" ]]; then
+		trigger_resource_snapshot "network threshold breach"
+	fi
 }
 
 main

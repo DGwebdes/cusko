@@ -37,4 +37,14 @@ TIME_WAIT_WARN_COUNT="${TIME_WAIT_WARN_COUNT:-200}"
 REACHABILITY_TARGET="${REACHABILITY_TARGET:-https://google.com}"
 REACHABILITY_LATENCY_WARN_MS="${REACHABILITY_LATENCY_WARN_MS:-1000}"
 
+# Alert dispatch backend - read be alert.sh, not chosen by individual script
 ALERT_BACKEND="${ALERT_BACKEND:-log}"   ## log | email | webhook
+
+
+# Cross-scrip chaining = network breach triggers a resource snapshot
+CHAIN_SNAPSHOT_ON_BREACH="${CHAIN_SNAPSHOT_ON_BREACH:-true}"
+
+# Scheduling - how often run_all.sh should run via cron
+TOOLKIT_RUN_INTERVAL_MIN="${TOOLKIT_RUN_INTERVAL_MIN:-5}"
+
+
