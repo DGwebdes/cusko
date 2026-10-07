@@ -110,7 +110,6 @@ you're polishing rather than using the toolkit:
 - Log file paths shown in output look messy (e.g. `scripts/logs/../../lib/../data/toolkit.log`) — works correctly, just not pretty.
 - Aggregate log state filenames get long for absolute paths.
 - The dual-stack (IPv6) path in network sampling has never run against real IPv6 traffic — this was only ever built and tested on an IPv4-only system.
-- `install_cron.sh --install` has only been confirmed to fail gracefully when `crontab` isn't installed — never confirmed to genuinely install an entry, since no test environment had real cron available.
 
 ## Known tradeoff: a broken script can take down its caller
 
@@ -133,4 +132,3 @@ and its own `sample.sh`.
 isolates failures completely, at the cost of losing direct function reuse —
 `check.sh` would need another way to get the sampled values back (e.g.
 having `sample.sh` print them in a simple parseable format). Not done yet;
-left as an open decision rather than changed unprompted.
